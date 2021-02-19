@@ -264,5 +264,6 @@ sort_1.print_linked_list()
 sort_2.print_linked_list()
 print("-"*15)
 print('Merging sorted list')
+
 sort_1.merge_sorted_list(sort_2)
 sort_1.print_linked_list()
