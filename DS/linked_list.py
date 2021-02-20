@@ -255,6 +255,25 @@ class LinkedList:
         else:
             return None
 
+    def count_occurences(self, data):
+        curr = self.head
+        count = 0
+        while curr:
+            if curr.data == data:
+                count += 1
+            curr = curr.next
+        print(count)
+        return count
+
+    def count_occurences_recursive(self, node, data):
+        if not node:
+            return 0
+        if node.data == data:
+            return 1 + self.count_occurences_recursive(node.next, data)
+        else:
+            return self.count_occurences_recursive(node.next, data)
+
+
 
 mylist = LinkedList()
 
@@ -336,3 +355,19 @@ print("-"*15)
 print("Getting Nth last node")
 dup_list.nth_to_last_node_v1(3)
 print(dup_list.nth_to_last_node_v2(3))
+print("-"*15)
+print("Counting occurrences")
+dup_list1 = LinkedList()
+dup_list1.append(0)
+dup_list1.append(0)
+dup_list1.append(0)
+dup_list1.append(1)
+dup_list1.append(3)
+dup_list1.append(5)
+dup_list1.append(1)
+dup_list1.append(5)
+dup_list1.append(6)
+dup_list1.append(7)
+dup_list1.print_linked_list()
+dup_list1.count_occurences(0)
+print(dup_list1.count_occurences_recursive(dup_list1.head, 5))
