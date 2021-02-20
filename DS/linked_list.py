@@ -274,6 +274,30 @@ class LinkedList:
             return self.count_occurences_recursive(node.next, data)
 
 
+    def is_palindrome_v1(self):
+        s = ""
+        curr = self.head
+        while curr:
+            s += curr.data
+            curr = curr.next
+        return s == s[::-1]
+
+    def is_palindrome_v2(self):
+        stack = []
+        curr = self.head
+
+        while curr:
+            stack.append(curr.data)
+            curr = curr.next
+
+        curr = self.head
+        while curr:
+            data = stack.pop()
+            if data != curr.data:
+                return False
+            curr = curr.next
+        return True
+
 
 mylist = LinkedList()
 
@@ -371,3 +395,13 @@ dup_list1.append(7)
 dup_list1.print_linked_list()
 dup_list1.count_occurences(0)
 print(dup_list1.count_occurences_recursive(dup_list1.head, 5))
+print("-"*15)
+pal_list = LinkedList()
+pal_list.append('r')
+pal_list.append('a')
+pal_list.append('d')
+pal_list.append('a')
+pal_list.append('r')
+pal_list.print_linked_list()
+print(f"Is list Palindrome ? {pal_list.is_palindrome_v1()}")
+print(f"Is list Palindrome ? {pal_list.is_palindrome_v2()}")
