@@ -221,6 +221,41 @@ class LinkedList:
                 prev = curr
             curr = prev.next
 
+    def nth_to_last_node_v1(self, n):
+        remaining_len = self.len_recursive(self.head)
+        curr = self.head
+
+        while curr:
+            if remaining_len == n:
+                print(curr.data)
+                return curr.data
+            remaining_len -= 1
+            curr = curr.next
+        if curr is None:
+            return
+
+    def nth_to_last_node_v2(self, n):
+        q = self.head
+        p = self.head
+
+        if n > 0:
+            count = 0
+            while q:
+                count += 1
+                if(count>=n):
+                    break
+                q = q.next
+            if not q:
+                print(str(n) + " is greater than the number of the nodes in list")
+                return
+            while p and q.next:
+                p = p.next
+                q = q.next
+            return p.data
+        else:
+            return None
+
+
 mylist = LinkedList()
 
 mylist.print_linked_list()
@@ -297,3 +332,7 @@ dup_list.append(7)
 dup_list.print_linked_list()
 dup_list.remove_duplicate()
 dup_list.print_linked_list()
+print("-"*15)
+print("Getting Nth last node")
+dup_list.nth_to_last_node_v1(3)
+print(dup_list.nth_to_last_node_v2(3))
