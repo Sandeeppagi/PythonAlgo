@@ -206,6 +206,20 @@ class LinkedList:
         self.head = new_head
         return self.head
 
+    def remove_duplicate(self):
+        curr = self.head
+        prev = None
+
+        dup_values = dict()
+
+        while curr:
+            if curr.data in dup_values:
+                prev.next = curr.next
+                curr = None
+            else:
+                dup_values[curr.data] = 1
+                prev = curr
+            curr = prev.next
 
 mylist = LinkedList()
 
@@ -267,3 +281,19 @@ print('Merging sorted list')
 
 sort_1.merge_sorted_list(sort_2)
 sort_1.print_linked_list()
+print("-"*15)
+print('Remove duplicates')
+dup_list = LinkedList()
+dup_list.append(0)
+dup_list.append(0)
+dup_list.append(0)
+dup_list.append(1)
+dup_list.append(3)
+dup_list.append(5)
+dup_list.append(1)
+dup_list.append(5)
+dup_list.append(6)
+dup_list.append(7)
+dup_list.print_linked_list()
+dup_list.remove_duplicate()
+dup_list.print_linked_list()
