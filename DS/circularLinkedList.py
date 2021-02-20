@@ -42,7 +42,29 @@ class CircularLinkedList:
                 print(f"{curr.data} -> ", end="")
                 curr = curr.next
                 if curr == self.head:
+                    print()
                     break
+
+    def remove_item(self, data):
+        if not self.head:
+            print('List is empty')
+        else:
+            curr = self.head
+            to_remove_node = None
+            previous_node = None
+            while curr:
+                if curr.data == data:
+                    to_remove_node = curr
+                if curr.next.data == data:
+                    previous_node = curr
+                if curr.next == self.head:
+                    break
+                curr = curr.next
+            print(previous_node.data, to_remove_node.data)
+            if to_remove_node == self.head:
+                self.head = to_remove_node.next
+            previous_node.next = to_remove_node.next
+            to_remove_node.next = None
 
 
 mylist = CircularLinkedList()
@@ -51,4 +73,8 @@ mylist.append(2)
 mylist.append(3)
 mylist.append(4)
 mylist.prepend(0)
+mylist.print_list()
+print('-'*30)
+mylist.print_list()
+mylist.remove_item(0)
 mylist.print_list()
