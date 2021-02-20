@@ -298,6 +298,69 @@ class LinkedList:
             curr = curr.next
         return True
 
+    def swap_tail_to_head(self):
+        prev = None
+        curr = self.head
+
+        if not curr:
+            print('List is empty')
+        if not curr.next:
+            print('List has only one element')
+
+        while curr.next:
+            prev = curr
+            curr = curr.next
+        head = self.head
+        self.head = curr
+        prev.next = head
+        head.next, curr.next = curr.next, head.next
+
+    def move_tail_to_head(self):
+        prev = None
+        curr = self.head
+
+        if not curr:
+            print('List is empty')
+        if not curr.next:
+            print('List has only one element')
+
+        while curr.next:
+            prev = curr
+            curr = curr.next
+        prev.next = None
+        curr.next = self.head
+        self.head = curr
+
+    def sum_two_lists(self, llist):
+        curr_1 = self.head
+        curr_2 = llist.head
+        ints_1 = []
+        ints_2 = []
+
+        while curr_1:
+            ints_1.append(curr_1.data)
+            curr_1 = curr_1.next
+
+        while curr_2:
+            ints_2.append(curr_2.data)
+            curr_2 = curr_2.next
+
+        str_1 = [str(item) for item in ints_1]
+        str_2 = [str(item) for item in ints_2]
+
+        number_1 = int("".join(str_1[::-1]))
+        number_2 = int("".join(str_2[::-1]))
+
+        result = str(number_1 + number_2)
+
+        array = [int(x) for x in result[::-1]]
+
+        new_list = LinkedList()
+        for item in array:
+            new_list.append(item)
+
+        return new_list
+
 
 mylist = LinkedList()
 
@@ -405,3 +468,44 @@ pal_list.append('r')
 pal_list.print_linked_list()
 print(f"Is list Palindrome ? {pal_list.is_palindrome_v1()}")
 print(f"Is list Palindrome ? {pal_list.is_palindrome_v2()}")
+print("-"*15)
+print('Sawp head and tail')
+head_to_tail_list = LinkedList()
+head_to_tail_list.append('A')
+head_to_tail_list.append('B')
+head_to_tail_list.append('C')
+head_to_tail_list.append('D')
+
+head_to_tail_list.print_linked_list()
+
+head_to_tail_list.swap_tail_to_head()
+head_to_tail_list.print_linked_list()
+
+print("-"*15)
+print('Move head and tail')
+head_to_tail_list_move = LinkedList()
+head_to_tail_list_move.append('A')
+head_to_tail_list_move.append('B')
+head_to_tail_list_move.append('C')
+head_to_tail_list_move.append('D')
+head_to_tail_list_move.print_linked_list()
+head_to_tail_list_move.move_tail_to_head()
+head_to_tail_list_move.print_linked_list()
+
+print("-"*15)
+print('Sum Two Linked Lists')
+
+num_1 = LinkedList()
+num_2 = LinkedList()
+
+num_1.append(5)
+num_1.append(6)
+num_1.append(3)
+
+num_2.append(8)
+num_2.append(4)
+num_2.append(2)
+num_1.print_linked_list()
+num_2.print_linked_list()
+final_list = num_1.sum_two_lists(num_2)
+final_list.print_linked_list()
