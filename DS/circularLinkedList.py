@@ -61,8 +61,10 @@ class CircularLinkedList:
                     break
                 curr = curr.next
             print(previous_node.data, to_remove_node.data)
+
             if to_remove_node == self.head:
                 self.head = to_remove_node.next
+
             previous_node.next = to_remove_node.next
             to_remove_node.next = None
 
@@ -76,5 +78,5 @@ mylist.prepend(0)
 mylist.print_list()
 print('-'*30)
 mylist.print_list()
-mylist.remove_item(0)
+mylist.remove_item(1)
 mylist.print_list()
