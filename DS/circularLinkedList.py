@@ -68,6 +68,56 @@ class CircularLinkedList:
             previous_node.next = to_remove_node.next
             to_remove_node.next = None
 
+    def __len__(self):
+        count = 0
+        curr = self.head
+        while curr:
+            count += 1
+            curr = curr.next
+            if curr == self.head:
+                break
+
+        print(f'Length of the circular linklist is {count}')
+        return count
+
+    def split_list(self):
+        size = len(self)
+
+        if size == 0:
+            return None
+        if size == 1:
+            return self.head
+
+        mid = size // 2
+        print(mid, size)
+
+        curr = self.head
+        tail_list_1 = None
+        head_list_2 = None
+        tail_list_2 = None
+        count = 0
+        while curr:
+            count += 1
+            if count == mid:
+                tail_list_1 = curr
+                head_list_2 = curr.next
+            if curr.next == self.head:
+                tail_list_2 = curr
+                break
+            curr = curr.next
+        print(self.head.data, tail_list_1.data, head_list_2.data, tail_list_2.data)
+        tail_list_1.next = self.head
+        tail_list_2.next = None
+        list2 = CircularLinkedList()
+        curr = head_list_2
+        while curr:
+            list2.append(curr.data)
+            if curr.next is None:
+                head_list_2.next = list2.head
+                break
+            curr = curr.next
+        print(self.print_list(), list2.print_list())
+
 
 mylist = CircularLinkedList()
 mylist.append(1)
@@ -76,7 +126,16 @@ mylist.append(3)
 mylist.append(4)
 mylist.prepend(0)
 mylist.print_list()
-print('-'*30)
+print('-' * 30)
 mylist.print_list()
 mylist.remove_item(1)
 mylist.print_list()
+print('-' * 30)
+size = CircularLinkedList()
+size.append(99)
+size.append(991)
+size.__len__()
+mylist.append(99)
+mylist.append(9)
+mylist.print_list()
+mylist.split_list()
