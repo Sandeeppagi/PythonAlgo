@@ -60,7 +60,7 @@ class CircularLinkedList:
                 if curr.next == self.head:
                     break
                 curr = curr.next
-            print(previous_node.data, to_remove_node.data)
+            print(f"Prev {previous_node.data}, toRemove {to_remove_node.data}")
 
             if to_remove_node == self.head:
                 self.head = to_remove_node.next
@@ -116,7 +116,22 @@ class CircularLinkedList:
                 head_list_2.next = list2.head
                 break
             curr = curr.next
-        print(self.print_list(), list2.print_list())
+        self.print_list()
+        list2.print_list()
+
+    def josephus_circle(self, step):
+        curr = self.head
+        while self.__len__() > 1:
+            count = 1
+            while count != step:
+                curr = curr.next
+                count += 1
+            to_remove_node = curr
+            curr = curr.next
+            print(f'Josephus is killing {to_remove_node.data}')
+            self.remove_item(to_remove_node.data)
+        print('End of killing')
+        self.print_list()
 
 
 mylist = CircularLinkedList()
@@ -127,8 +142,9 @@ mylist.append(4)
 mylist.prepend(0)
 mylist.print_list()
 print('-' * 30)
+print('Remove items from the list')
 mylist.print_list()
-mylist.remove_item(1)
+mylist.remove_item(0)
 mylist.print_list()
 print('-' * 30)
 size = CircularLinkedList()
@@ -139,3 +155,18 @@ mylist.append(99)
 mylist.append(9)
 mylist.print_list()
 mylist.split_list()
+print('-' * 30)
+mylist_2 = CircularLinkedList()
+print('Josephus Problem')
+mylist_2.append(1)
+mylist_2.append(2)
+mylist_2.append(3)
+mylist_2.append(4)
+mylist_2.append(5)
+mylist_2.append(6)
+mylist_2.append(7)
+mylist_2.append(8)
+mylist_2.append(9)
+mylist_2.append(10)
+mylist_2.print_list()
+mylist_2.josephus_circle(3)
