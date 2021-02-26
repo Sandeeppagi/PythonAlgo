@@ -133,6 +133,17 @@ class CircularLinkedList:
         print('End of killing')
         self.print_list()
 
+    def is_circular_linked_list(self):
+        curr = self.head
+        while curr:
+            if curr.next == self.head:
+                print('It is CircularLinkedList')
+                return True
+            if curr.next is None:
+                print('It is not a CircularLinkedList')
+                return False
+            curr = curr.next
+
 
 mylist = CircularLinkedList()
 mylist.append(1)
@@ -169,4 +180,5 @@ mylist_2.append(8)
 mylist_2.append(9)
 mylist_2.append(10)
 mylist_2.print_list()
+mylist_2.is_circular_linked_list(mylist_2)
 mylist_2.josephus_circle(3)
