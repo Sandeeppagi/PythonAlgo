@@ -72,6 +72,32 @@ class DoublyLinkedList:
             if curr == self.head:
                 self.head = node
 
+    def delete_node(self, key):
+        curr = self.head
+        while curr:
+            if curr.data == key and curr == self.head:
+                if curr.next is None:
+                    print('Deleting the only node')
+                    self.head = None
+                    return
+                else:
+                    print('Deleting the head node')
+                    curr = curr.next
+                    curr.prev.next = None
+                    self.head = curr
+                    return
+            if curr.data == key:
+                if curr.next is None:
+                    print('Deleting the last node')
+                    curr.prev.next = None
+                    curr.prev = None
+                else:
+                    print('Deleting the node somewhere in middle')
+                    curr.prev.next = curr.next
+                    curr.next.prev = curr.prev
+                    curr.next = None
+                    curr.prev = None
+            curr = curr.next
 
     def my_print(self):
         curr = self.head
@@ -105,3 +131,14 @@ mydll_3.append(1)
 mydll_3.append(2)
 mydll_3.add_before(2, 3)
 mydll_3.my_print()
+print('-'*30)
+print('Delete the key')
+mydll_4 = DoublyLinkedList()
+mydll_4.append(1)
+mydll_4.append(2)
+mydll_4.append(3)
+mydll_4.append(4)
+mydll_4.append(5)
+mydll_4.my_print()
+mydll_4.delete_node(5)
+mydll_4.my_print()
