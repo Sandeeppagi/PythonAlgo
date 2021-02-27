@@ -110,27 +110,63 @@ class DoublyLinkedList:
             curr = next
         self.head = prev
 
+    def remove_duplicates(self):
+        cur = self.head
+        seen = dict()
+        while cur:
+            if cur.data not in seen:
+                seen[cur.data] = 1
+                cur = cur.next
+            else:
+                nxt = cur.next
+                self.delete_node(cur.data)
+                cur = nxt
+
+    def pairs_with_sum(self, sum_val):
+        curr = self.head
+        my_list = []
+        str1 = ""
+        while curr:
+            to_find = sum_val - curr.data
+            node = curr.next
+            while node and node.data != to_find:
+                node = node.next
+            if curr and node:
+                str1 = "(" + str(curr.data) + "," + str(node.data) + ")"
+                my_list.append(str1)
+            curr = curr.next
+        return my_list
+
+    def print_list1(self):
+        cur = self.head
+        while cur.next:
+            cur = cur.next
+
+        while cur:
+            print(cur.data)
+            cur = cur.prev
     def my_print(self):
         curr = self.head
         while curr:
             print(curr.data)
             curr = curr.next
 
-print('-'*30)
+
+print('-' * 30)
 print('Append the DoublyLinkedList')
 mydll = DoublyLinkedList()
 mydll.append(88)
 mydll.append(2)
 mydll.append(3)
 mydll.my_print()
-print('-'*30)
+print('-' * 30)
 print('Prepend the DoublyLinkedList')
 mydll_1 = DoublyLinkedList()
 mydll_1.prepend(88)
 mydll_1.prepend(2)
 mydll_1.prepend(3)
 mydll_1.my_print()
-print('-'*30)
+print('-' * 30)
 print('Add after the key')
 mydll_2 = DoublyLinkedList()
 mydll_2.append(1)
@@ -142,7 +178,7 @@ mydll_3.append(1)
 mydll_3.append(2)
 mydll_3.add_before(2, 3)
 mydll_3.my_print()
-print('-'*30)
+print('-' * 30)
 print('Delete the key')
 mydll_4 = DoublyLinkedList()
 mydll_4.append(1)
@@ -153,7 +189,7 @@ mydll_4.append(5)
 mydll_4.my_print()
 mydll_4.delete_node(5)
 mydll_4.my_print()
-print('-'*30)
+print('-' * 30)
 print('Reverse the list')
 mydll_5 = DoublyLinkedList()
 mydll_5.append(1)
@@ -165,3 +201,27 @@ mydll_5.my_print()
 mydll_5.reverse_list()
 print('Reverse the list---')
 mydll_5.my_print()
+print('-' * 30)
+print('Delete duplicates in the list')
+mydll_6 = DoublyLinkedList()
+mydll_6.append(1)
+mydll_6.append(2)
+mydll_6.append(2)
+mydll_6.append(4)
+mydll_6.append(5)
+mydll_6.my_print()
+mydll_6.remove_duplicates()
+print('Delete duplicates in the list--')
+mydll_6.my_print()
+print('-' * 30)
+print('Show sum list')
+mydll_7 = DoublyLinkedList()
+mydll_7.append(1)
+mydll_7.append(2)
+mydll_7.append(3)
+mydll_7.append(4)
+mydll_7.append(5)
+mydll_7.my_print()
+ll = mydll_7.pairs_with_sum(5)
+print(ll)
+mydll_7.print_list1()
