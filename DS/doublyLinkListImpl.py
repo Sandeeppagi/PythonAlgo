@@ -99,6 +99,17 @@ class DoublyLinkedList:
                     curr.prev = None
             curr = curr.next
 
+    def reverse_list(self):
+        curr = self.head
+        prev = None
+        while curr:
+            next = curr.next
+            curr.prev = next
+            curr.next = prev
+            prev = curr
+            curr = next
+        self.head = prev
+
     def my_print(self):
         curr = self.head
         while curr:
@@ -142,3 +153,15 @@ mydll_4.append(5)
 mydll_4.my_print()
 mydll_4.delete_node(5)
 mydll_4.my_print()
+print('-'*30)
+print('Reverse the list')
+mydll_5 = DoublyLinkedList()
+mydll_5.append(1)
+mydll_5.append(2)
+mydll_5.append(3)
+mydll_5.append(4)
+mydll_5.append(5)
+mydll_5.my_print()
+mydll_5.reverse_list()
+print('Reverse the list---')
+mydll_5.my_print()
