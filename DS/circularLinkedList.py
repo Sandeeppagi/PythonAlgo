@@ -105,7 +105,8 @@ class CircularLinkedList:
                 tail_list_2 = curr
                 break
             curr = curr.next
-        print(self.head.data, tail_list_1.data, head_list_2.data, tail_list_2.data)
+        print(self.head.data, tail_list_1.data,
+              head_list_2.data, tail_list_2.data)
         tail_list_1.next = self.head
         tail_list_2.next = None
         list2 = CircularLinkedList()
