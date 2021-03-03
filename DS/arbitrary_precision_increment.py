@@ -6,6 +6,12 @@ A2 = [9, 9, 9]
 # print(int(s) + 1)
 
 def plus_one(A):
+    """
+    Given: An array of non-negative digits that represent a decimal integer.
+
+    Problem: Add one to the integer. Assume the solution still works even if implemented in a language with
+    finite-precision arithmetic :param A: :return:
+    """
     A[-1] += 1
     for i in reversed(range(1, len(A))):
         if A[i] != 10:

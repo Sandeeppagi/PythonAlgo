@@ -1,4 +1,10 @@
 def two_sum_brute_force(A, target):
+    """
+    Given an array of integers, return True or False if the array has two numbers that add up to a specific target.
+    You may assume that each input would have exactly one solution.
+    :param A:
+    :param target:
+    """
     for i in range(len(A) - 1):
         for j in range(i + 1, len(A)):
             if A[i] + A[j] == target:
