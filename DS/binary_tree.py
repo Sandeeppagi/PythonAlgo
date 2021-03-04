@@ -1,4 +1,6 @@
-from queue import Queue
+from my_queue import Queue
+from stack import Stack
+
 
 class Node:
     """
@@ -65,7 +67,7 @@ class BinaryTree:
 
         while queue.size() > 0:
             traversal += (str(queue.peek()) + '-')
-            queue.__str__()
+            # queue.__str__()
             node = queue.dequeue()
 
             if node.left:
@@ -74,6 +76,67 @@ class BinaryTree:
                 queue.enqueue(node.right)
 
         return traversal
+
+    def reverse_level_order_traversal(self, start, traversal):
+        if start is None:
+            return
+
+        stack = Stack()
+        queue = Queue()
+        queue.enqueue(start)
+
+        while queue.size() > 0:
+            node = queue.dequeue();
+            stack.push(node)
+
+            if node.right:
+                queue.enqueue(node.right)
+            if node.left:
+                queue.enqueue(node.left)
+
+        for i in range(stack.size()):
+            item = stack.pop()
+            traversal += str(item.data) + "-"
+
+        return traversal
+
+    def tree_height(self, node):
+        if node is None:
+            return -1
+
+        left_height = self.tree_height(node.left)
+        right_height = self.tree_height(node.right)
+
+        return 1 + max(left_height, right_height)
+
+    def tree_size_v1(self, node):
+        if node is None:
+            return 0
+        return 1 + self.tree_size_v1(node.left) + self.tree_size_v1(node.right)
+
+    def tree_size_v2(self, node, size):
+        if node:
+            size = self.tree_size_v2(node.left, size)
+            size = self.tree_size_v2(node.right, size)
+            size += 1
+        return size
+
+    def tree_size_v3(self):
+        if self.root is None:
+            return 0
+        stack = Stack()
+        stack.push(self.root)
+        size = 1
+        while stack:
+            node = stack.pop()
+            if node.left:
+                size += 1
+                stack.push(node.left)
+            if node.right:
+                size += 1
+                stack.push(node.right)
+        return size
+
 
 #               1
 #           /       \
@@ -89,7 +152,29 @@ tree.root.left.right = Node(5)
 tree.root.right.left = Node(6)
 tree.root.right.right = Node(7)
 
+print('-' * 30)
+print('Pre Ordered traversal')
 print(tree.preorder_print(tree.root, ""))
+print('-' * 30)
+print('In Ordered traversal')
 print(tree.inorder_print(tree.root, ""))
+print('-' * 30)
+print('Post Ordered traversal')
 print(tree.postorder_print(tree.root, ""))
+print('-' * 30)
+print('Level Ordered traversal')
 print(tree.level_order_traversal(tree.root, ""))
+print('-' * 30)
+print('Reversed Level Ordered traversal')
+print(tree.reverse_level_order_traversal(tree.root, ""))
+print('-' * 30)
+print(f"Height of the tree {tree.tree_height(tree.root)}")
+print('-' * 30)
+print('Size of the tree V1')
+print(tree.tree_size_v1(tree.root))
+print('-' * 30)
+print('Size of the tree V2')
+print(tree.tree_size_v2(tree.root, 0))
+print('-' * 30)
+print('Size of the tree V3')
+print(tree.tree_size_v3())

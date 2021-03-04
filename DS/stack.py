@@ -9,13 +9,27 @@ class Stack:
         self.stack.append(data)
 
     def pop(self):
-        return self.stack.pop()
+        if not self.is_empty():
+            return self.stack.pop()
 
     def peek(self):
-        return self.stack[-1]
+        if not self.is_empty():
+            return self.stack[-1]
 
     def get_stack(self):
         return self.stack
+
+    def size(self):
+        return len(self.stack)
+
+    def __len__(self):
+        return self.size()
+
+    def __str__(self):
+        s = ""
+        for i in range(len(self.stack)):
+            s += str(self.stack[i].data) + "-"
+        return s
 
 
 # my_stack = Stack()
