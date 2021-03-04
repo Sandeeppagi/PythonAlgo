@@ -1,3 +1,5 @@
+from queue import Queue
+
 class Node:
     """
     Creating Node class used in the tree
@@ -54,6 +56,24 @@ class BinaryTree:
             traversal += (str(start.data) + '-')
         return traversal
 
+    def level_order_traversal(self, start, traversal):
+        if start is None:
+            return
+
+        queue = Queue()
+        queue.enqueue(start)
+
+        while queue.size() > 0:
+            traversal += (str(queue.peek()) + '-')
+            queue.__str__()
+            node = queue.dequeue()
+
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
+
+        return traversal
 
 #               1
 #           /       \
@@ -72,3 +92,4 @@ tree.root.right.right = Node(7)
 print(tree.preorder_print(tree.root, ""))
 print(tree.inorder_print(tree.root, ""))
 print(tree.postorder_print(tree.root, ""))
+print(tree.level_order_traversal(tree.root, ""))
