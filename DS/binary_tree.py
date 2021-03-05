@@ -32,6 +32,13 @@ class BinaryTree:
             traversal = self.preorder_print(start.right, traversal)
         return traversal
 
+    #               1
+    #           /       \
+    #          2          3
+    #         /  \      /   \
+    #        4    5     6   7
+
+
     def inorder_print(self, start, traversal):
         """
         Left->Print->Right
@@ -45,6 +52,13 @@ class BinaryTree:
             traversal = self.inorder_print(start.right, traversal)
         return traversal
 
+    #               1
+    #           /       \
+    #          2          3
+    #         /  \      /   \
+    #        4    5     6   7
+
+
     def postorder_print(self, start, traversal):
         """
         Left->Right->Print
@@ -57,6 +71,12 @@ class BinaryTree:
             traversal = self.postorder_print(start.right, traversal)
             traversal += (str(start.data) + '-')
         return traversal
+
+    #               1
+    #           /       \
+    #          2          3
+    #         /  \      /   \
+    #        4    5     6   7
 
     def level_order_traversal(self, start, traversal):
         if start is None:
@@ -76,6 +96,13 @@ class BinaryTree:
                 queue.enqueue(node.right)
 
         return traversal
+
+    #               1
+    #           /       \
+    #          2          3
+    #         /  \      /   \
+    #        4    5     6   7
+
 
     def reverse_level_order_traversal(self, start, traversal):
         if start is None:
@@ -100,6 +127,13 @@ class BinaryTree:
 
         return traversal
 
+    #               1
+    #           /       \
+    #          2          3
+    #         /  \      /   \
+    #        4    5     6   7
+
+
     def tree_height(self, node):
         if node is None:
             return -1
@@ -113,6 +147,12 @@ class BinaryTree:
         if node is None:
             return 0
         return 1 + self.tree_size_v1(node.left) + self.tree_size_v1(node.right)
+
+    #               1
+    #           /       \
+    #          2          3
+    #         /  \      /   \
+    #        4    5     6   7
 
     def tree_size_v2(self, node, size):
         if node:
