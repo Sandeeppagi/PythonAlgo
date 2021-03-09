@@ -2,9 +2,10 @@ from LinkedList.linked_list import LinkedList
 
 
 class Graph:
-    def __init__(self, vertices):
+    def __init__(self, vertices, is_undirected):
         self.vertices = vertices
         self.array = []
+        self.is_undirected = is_undirected
         for i in range(vertices):
             vertex = LinkedList()
             self.array.append(vertex)
@@ -12,10 +13,12 @@ class Graph:
     def add_edge(self, source, destination):
         if source < self.vertices and destination < self.vertices:
             self.array[source].insert_at_head(destination)
+            if self.is_undirected:
+                self.array[destination].insert_at_head(source)
 
     def print_graph(self):
         print('-'*50)
-        print('Printing adjacency list of the directed graphs')
+        print(f'Printing adjacency list of the {"undirected" if self.is_undirected else "directed"} graphs')
         print()
         for i in range(self.vertices):
             print("|", i, end=" | => ")
