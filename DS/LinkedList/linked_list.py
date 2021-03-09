@@ -8,6 +8,9 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    def get_head(self):
+        return self.head
+
     def append(self, data):
         new_node = Node(data)
         if self.is_empty():
@@ -39,6 +42,15 @@ class LinkedList:
                     break
                 current_node = current_node.next
             print('Node not present')
+
+    def insert_at_head(self, data):
+        node = Node(data)
+        if self.is_empty():
+            self.head = node
+        else:
+            node.next = self.head
+            self.head = node
+        return self.head
 
     def delete_node(self, to_delete):
         if not self.is_empty():
@@ -362,150 +374,150 @@ class LinkedList:
         return new_list
 
 
-mylist = LinkedList()
-
-mylist.print_linked_list()
-
-mylist.prepend(0)
-
-mylist.append(1)
-
-mylist.append(2)
-
-mylist.append(3)
-
-mylist.append(4)
-
-mylist.prepend(-1)
-
-mylist.insert_node(55, 22)
-
-# mylist.delete_node(55)
-
-mylist.print_linked_list()
-mylist.delete_node_position(5)
-
-mylist.print_linked_list()
-
-mylist.swap_nodes(0, 2)
-
-mylist.print_linked_list()
-mylist.reverse_list()
-mylist.print_linked_list()
-mylist.reverse_list()
-mylist.print_linked_list()
-mylist.reverse_list_recursive()
-mylist.print_linked_list()
-print(mylist.len_recursive(mylist.head))
-
-print(mylist.len_iterative(mylist.head))
-
-
-sort_1 = LinkedList()
-sort_1.append(0)
-sort_1.append(3)
-sort_1.append(8)
-sort_1.append(19)
-sort_1.append(21)
-
-sort_2 = LinkedList()
-sort_2.append(2)
-sort_2.append(5)
-sort_2.append(9)
-sort_2.append(11)
-sort_2.append(20)
-print("-"*15)
-sort_1.print_linked_list()
-sort_2.print_linked_list()
-print("-"*15)
-print('Merging sorted list')
-
-sort_1.merge_sorted_list(sort_2)
-sort_1.print_linked_list()
-print("-"*15)
-print('Remove duplicates')
-dup_list = LinkedList()
-dup_list.append(0)
-dup_list.append(0)
-dup_list.append(0)
-dup_list.append(1)
-dup_list.append(3)
-dup_list.append(5)
-dup_list.append(1)
-dup_list.append(5)
-dup_list.append(6)
-dup_list.append(7)
-dup_list.print_linked_list()
-dup_list.remove_duplicate()
-dup_list.print_linked_list()
-print("-"*15)
-print("Getting Nth last node")
-dup_list.nth_to_last_node_v1(3)
-print(dup_list.nth_to_last_node_v2(3))
-print("-"*15)
-print("Counting occurrences")
-dup_list1 = LinkedList()
-dup_list1.append(0)
-dup_list1.append(0)
-dup_list1.append(0)
-dup_list1.append(1)
-dup_list1.append(3)
-dup_list1.append(5)
-dup_list1.append(1)
-dup_list1.append(5)
-dup_list1.append(6)
-dup_list1.append(7)
-dup_list1.print_linked_list()
-dup_list1.count_occurences(0)
-print(dup_list1.count_occurences_recursive(dup_list1.head, 5))
-print("-"*15)
-pal_list = LinkedList()
-pal_list.append('r')
-pal_list.append('a')
-pal_list.append('d')
-pal_list.append('a')
-pal_list.append('r')
-pal_list.print_linked_list()
-print(f"Is list Palindrome ? {pal_list.is_palindrome_v1()}")
-print(f"Is list Palindrome ? {pal_list.is_palindrome_v2()}")
-print("-"*15)
-print('Sawp head and tail')
-head_to_tail_list = LinkedList()
-head_to_tail_list.append('A')
-head_to_tail_list.append('B')
-head_to_tail_list.append('C')
-head_to_tail_list.append('D')
-
-head_to_tail_list.print_linked_list()
-
-head_to_tail_list.swap_tail_to_head()
-head_to_tail_list.print_linked_list()
-
-print("-"*15)
-print('Move head and tail')
-head_to_tail_list_move = LinkedList()
-head_to_tail_list_move.append('A')
-head_to_tail_list_move.append('B')
-head_to_tail_list_move.append('C')
-head_to_tail_list_move.append('D')
-head_to_tail_list_move.print_linked_list()
-head_to_tail_list_move.move_tail_to_head()
-head_to_tail_list_move.print_linked_list()
-
-print("-"*15)
-print('Sum Two Linked Lists')
-
-num_1 = LinkedList()
-num_2 = LinkedList()
-
-num_1.append(5)
-num_1.append(6)
-num_1.append(3)
-
-num_2.append(8)
-num_2.append(4)
-num_2.append(2)
-num_1.print_linked_list()
-num_2.print_linked_list()
-final_list = num_1.sum_two_lists(num_2)
-final_list.print_linked_list()
+# mylist = LinkedList()
+#
+# mylist.print_linked_list()
+#
+# mylist.prepend(0)
+#
+# mylist.append(1)
+#
+# mylist.append(2)
+#
+# mylist.append(3)
+#
+# mylist.append(4)
+#
+# mylist.prepend(-1)
+#
+# mylist.insert_node(55, 22)
+#
+# # mylist.delete_node(55)
+#
+# mylist.print_linked_list()
+# mylist.delete_node_position(5)
+#
+# mylist.print_linked_list()
+#
+# mylist.swap_nodes(0, 2)
+#
+# mylist.print_linked_list()
+# mylist.reverse_list()
+# mylist.print_linked_list()
+# mylist.reverse_list()
+# mylist.print_linked_list()
+# mylist.reverse_list_recursive()
+# mylist.print_linked_list()
+# print(mylist.len_recursive(mylist.head))
+#
+# print(mylist.len_iterative(mylist.head))
+#
+#
+# sort_1 = LinkedList()
+# sort_1.append(0)
+# sort_1.append(3)
+# sort_1.append(8)
+# sort_1.append(19)
+# sort_1.append(21)
+#
+# sort_2 = LinkedList()
+# sort_2.append(2)
+# sort_2.append(5)
+# sort_2.append(9)
+# sort_2.append(11)
+# sort_2.append(20)
+# print("-"*15)
+# sort_1.print_linked_list()
+# sort_2.print_linked_list()
+# print("-"*15)
+# print('Merging sorted list')
+#
+# sort_1.merge_sorted_list(sort_2)
+# sort_1.print_linked_list()
+# print("-"*15)
+# print('Remove duplicates')
+# dup_list = LinkedList()
+# dup_list.append(0)
+# dup_list.append(0)
+# dup_list.append(0)
+# dup_list.append(1)
+# dup_list.append(3)
+# dup_list.append(5)
+# dup_list.append(1)
+# dup_list.append(5)
+# dup_list.append(6)
+# dup_list.append(7)
+# dup_list.print_linked_list()
+# dup_list.remove_duplicate()
+# dup_list.print_linked_list()
+# print("-"*15)
+# print("Getting Nth last node")
+# dup_list.nth_to_last_node_v1(3)
+# print(dup_list.nth_to_last_node_v2(3))
+# print("-"*15)
+# print("Counting occurrences")
+# dup_list1 = LinkedList()
+# dup_list1.append(0)
+# dup_list1.append(0)
+# dup_list1.append(0)
+# dup_list1.append(1)
+# dup_list1.append(3)
+# dup_list1.append(5)
+# dup_list1.append(1)
+# dup_list1.append(5)
+# dup_list1.append(6)
+# dup_list1.append(7)
+# dup_list1.print_linked_list()
+# dup_list1.count_occurences(0)
+# print(dup_list1.count_occurences_recursive(dup_list1.head, 5))
+# print("-"*15)
+# pal_list = LinkedList()
+# pal_list.append('r')
+# pal_list.append('a')
+# pal_list.append('d')
+# pal_list.append('a')
+# pal_list.append('r')
+# pal_list.print_linked_list()
+# print(f"Is list Palindrome ? {pal_list.is_palindrome_v1()}")
+# print(f"Is list Palindrome ? {pal_list.is_palindrome_v2()}")
+# print("-"*15)
+# print('Sawp head and tail')
+# head_to_tail_list = LinkedList()
+# head_to_tail_list.append('A')
+# head_to_tail_list.append('B')
+# head_to_tail_list.append('C')
+# head_to_tail_list.append('D')
+#
+# head_to_tail_list.print_linked_list()
+#
+# head_to_tail_list.swap_tail_to_head()
+# head_to_tail_list.print_linked_list()
+#
+# print("-"*15)
+# print('Move head and tail')
+# head_to_tail_list_move = LinkedList()
+# head_to_tail_list_move.append('A')
+# head_to_tail_list_move.append('B')
+# head_to_tail_list_move.append('C')
+# head_to_tail_list_move.append('D')
+# head_to_tail_list_move.print_linked_list()
+# head_to_tail_list_move.move_tail_to_head()
+# head_to_tail_list_move.print_linked_list()
+#
+# print("-"*15)
+# print('Sum Two Linked Lists')
+#
+# num_1 = LinkedList()
+# num_2 = LinkedList()
+#
+# num_1.append(5)
+# num_1.append(6)
+# num_1.append(3)
+#
+# num_2.append(8)
+# num_2.append(4)
+# num_2.append(2)
+# num_1.print_linked_list()
+# num_2.print_linked_list()
+# final_list = num_1.sum_two_lists(num_2)
+# final_list.print_linked_list()
