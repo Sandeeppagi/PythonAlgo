@@ -51,21 +51,44 @@ bfs_traversal(g, 0)
 bfs_traversal(g1, 0)
 
 # TODO: Refactor below method
-def dsf_traversal(g, source, result, stack):
+def dsf_traversal_recursive(g, source, result, stack):
     if source < g.vertices:
         if source not in result:
             result.append(source)
         node = g.array[source].get_head()
-        if node and node.data not in result:
-            stack.push(source)
-            dsf_traversal(g, node.data, result, stack)
-        elif node and node.data in result:
-            if node.next:
-                dsf_traversal(g, node.next.data, result, stack)
-        elif node is None:
+        if node is None:
             source = stack.pop()
-            dsf_traversal(g, source, result, stack)
+            node = g.array[source].get_head()
+        if node:
+            if node.data not in result:
+                stack.push(source)
+                dsf_traversal_recursive(g, node.data, result, stack)
+            elif node.data in result:
+                if node.next:
+                    dsf_traversal_recursive(g, node.next.data, result, stack)
     return result
+
+def dsf_traversal_iterative(g, source):
+    result = []
+    stack = Stack()
+    if source < g.vertices:
+        stack.push(source)
+        while stack.size() > 0:
+            if source not in result:
+                result.append(source)
+            node = g.array[source].get_head()
+            if node:
+                if source not in result:
+                    stack.push(node.data)
+                    source = node.data
+                elif node.next:
+                    stack.push(node.next.data)
+                    source = node.next.data
+            if node is None:
+                source = stack.pop()
+        print(result)
+
+
 
 g2 = Graph(6, False)
 g2.add_edge(0, 2)
@@ -76,4 +99,5 @@ g2.add_edge(2, 5)
 g2.print_graph()
 
 stack = Stack()
-print(dsf_traversal(g2, 0, [], stack))
+print(dsf_traversal_recursive(g2, 0, [], stack))
+dsf_traversal_iterative(g2, 0)
