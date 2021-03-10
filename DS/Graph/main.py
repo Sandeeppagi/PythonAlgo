@@ -50,6 +50,29 @@ bfs_traversal(g, 0)
 bfs_traversal(g1, 0)
 
 
+def is_cyclic_graph(g, source):
+    g.print_graph()
+    result =[]
+    stack = Stack()
+    stack.push(source)
+    while stack.is_empty() is False:
+        curr_node = stack.pop()
+        if curr_node in result:
+            node = g.array[curr_node].get_head()
+            while node:
+                if node.data in result:
+                    return True
+                node = node.next
+        else:
+            result.append(curr_node)
+        node = g.array[curr_node].get_head()
+        while node:
+            stack.push(node.data)
+            node = node.next
+    return False
+
+
+
 # TODO: Refactor below method
 def dsf_traversal_recursive(g, source, result, stack):
     if source < g.vertices:
@@ -144,3 +167,15 @@ print(dsf_traversal_recursive(g2, 0, [], stack))
 print(dsf_traversal_iterative(g2, 0))
 
 print(dfs_traversal(g2, 0))
+bfs_traversal(g2, 0)
+
+print('-'*45)
+print(is_cyclic_graph(g, 0))
+print(is_cyclic_graph(g1, 0))
+print(is_cyclic_graph(g2, 0))
+
+g4 = Graph(3, False)
+g4.add_edge(0, 1)
+g4.add_edge(1, 2)
+g4.add_edge(2, 0)
+print(is_cyclic_graph(g4, 0))
