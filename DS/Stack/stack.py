@@ -28,7 +28,10 @@ class Stack:
     def __str__(self):
         s = ""
         for i in range(len(self.stack)):
-            s += str(self.stack[i].data) + "-"
+            if type(self.stack[i]) is not int:
+                s += str(self.stack[i].data) + "-"
+            else:
+                s += str(self.stack[i]) + "-"
         return s
 
 

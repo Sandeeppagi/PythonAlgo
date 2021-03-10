@@ -73,12 +73,13 @@ def dsf_traversal_iterative(g, source):
     stack = Stack()
     if source < g.vertices:
         stack.push(source)
-        while stack.size() > 0:
+        number_of_nodes = len(g.array)
+        while len(result) != number_of_nodes :
             if source not in result:
                 result.append(source)
             node = g.array[source].get_head()
             if node:
-                if source not in result:
+                if node.data not in result:
                     stack.push(node.data)
                     source = node.data
                 elif node.next:
@@ -86,7 +87,7 @@ def dsf_traversal_iterative(g, source):
                     source = node.next.data
             if node is None:
                 source = stack.pop()
-        print(result)
+        return "".join([str(i) for i in result])
 
 
 
@@ -100,4 +101,4 @@ g2.print_graph()
 
 stack = Stack()
 print(dsf_traversal_recursive(g2, 0, [], stack))
-dsf_traversal_iterative(g2, 0)
+print(dsf_traversal_iterative(g2, 0))
