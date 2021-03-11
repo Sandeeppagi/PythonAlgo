@@ -118,6 +118,14 @@ class LinkedList:
             return 0
         return 1 + self.len_recursive(current_node.next)
 
+    def length(self):
+        current_node = self.head
+        counter = 0
+        while current_node:
+            counter += 1
+            current_node = current_node.next
+        return counter
+
     def len_iterative(self, current_node):
         counter = 0
         while current_node:
