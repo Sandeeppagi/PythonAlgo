@@ -3,6 +3,54 @@ from Stack.stack import Stack
 from Stack.my_queue import Queue
 
 
+def find_mother_vertex_recursive(g):
+    g.print_graph()
+    # visited[] is used for DFS. Initially all are
+    # initialized as not visited
+    visited = [False] * g.vertices
+
+    # To store last finished vertex (or mother vertex)
+    last_v = 0
+
+    # Do a DFS traversal and find the last finished
+    # vertex
+    for i in range(g.vertices):
+        if visited[i] is False:
+            perform_DFS(g, i, visited)
+            last_v = i
+
+    # If there exist mother vertex (or vetices) in given
+    # graph, then v must be one (or one of them)
+
+    # Now check if v is actually a mother vertex (or graph
+    # has a mother vertex). We basically check if every vertex
+    # is reachable from v or not.
+
+    # Reset all values in visited[] as false and do
+    # DFS beginning from v to check if all vertices are
+    # reachable from it or not.
+    visited = [False] * g.vertices
+    perform_DFS(g, last_v, visited)
+    if any(i is False for i in visited):
+        return -1
+    else:
+        return last_v
+
+
+# A recursive function to print DFS starting from v
+def perform_DFS(g, node, visited):
+
+    # Mark the current node as visited and print it
+    visited[node] = True
+
+    # Recur for all the vertices adjacent to this vertex
+    temp = g.array[node].get_head()
+    while temp:
+        if visited[temp.data] is False:
+            perform_DFS(g, temp.data, visited)
+        temp = temp.next
+
+
 def find_mother_vertex_helper_dfs(g, node):
     result = []
     stack = Stack()
@@ -80,12 +128,19 @@ g3.add_edge(0, 1)
 g3.add_edge(1, 2)
 g3.add_edge(2, 0)
 
+g4 = Graph(4, False)
+g4.add_edge(0, 1)
+g4.add_edge(1, 2)
+g4.add_edge(3, 0)
+g4.add_edge(3, 1)
+
 print('-' * 50)
 print('Find mother vertex dfs version')
 print(find_mother_vertex(g, True))
 print(find_mother_vertex(g1, True))
 print(find_mother_vertex(g2, True))
 print(find_mother_vertex(g3, True))
+print(find_mother_vertex(g4, True))
 
 print('-' * 50)
 print('Find mother vertex bfs version')
@@ -93,3 +148,12 @@ print(find_mother_vertex(g, False))
 print(find_mother_vertex(g1, False))
 print(find_mother_vertex(g2, False))
 print(find_mother_vertex(g3, False))
+print(find_mother_vertex(g4, False))
+
+print('-' * 50)
+print('Find mother vertex dfs recursive')
+print(find_mother_vertex_recursive(g))
+print(find_mother_vertex_recursive(g1))
+print(find_mother_vertex_recursive(g2))
+print(find_mother_vertex_recursive(g3))
+print(find_mother_vertex_recursive(g4))
