@@ -35,7 +35,7 @@ g.add_edge(0, 2)
 g.add_edge(1, 3)
 g.add_edge(1, 4)
 
-# directed graph
+# undirected graph
 g1 = Graph(4, True)
 g1.add_edge(0, 1)
 g1.add_edge(0, 2)
