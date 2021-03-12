@@ -36,5 +36,13 @@ g.add_edge(0, 2)
 g.add_edge(0, 3)
 g.add_edge(3, 4)
 
+g3 = Graph(3, False)
+g3.add_edge(0, 1)
+g3.add_edge(1, 2)
+g3.add_edge(2, 0)
 
+
+print('-'*30)
+print('Check if graph is tree')
 print(is_tree(g))
+print(is_tree(g3))
