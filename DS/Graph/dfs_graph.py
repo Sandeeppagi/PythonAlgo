@@ -17,6 +17,30 @@ def dsf_traversal_iterative(g, source):
             node = node.next
     return "".join([str(i) for i in result])
 
+def dsf_traversal_recursive_alternative_path(g, curr_node, result):
+    if curr_node not in result:
+        result.append(curr_node)
+    adjacent = g.array[curr_node].get_head()
+    if adjacent and adjacent.data not in result:
+        result.append(adjacent.data)
+        result = dsf_traversal_recursive_alternative_path(g, adjacent.data, result)
+        adjacent = adjacent.next
+        if adjacent:
+            result = dsf_traversal_recursive_alternative_path(g, adjacent.data, result)
+    return result
+
+def dsf_traversal_recursive(g, curr_node, result):
+    if curr_node not in result:
+        result.append(curr_node)
+    g.array[curr_node].reverse_list()
+    adjacent = g.array[curr_node].get_head()
+    if adjacent and adjacent.data not in result:
+        result.append(adjacent.data)
+        result = dsf_traversal_recursive_alternative_path(g, adjacent.data, result)
+        adjacent = adjacent.next
+        if adjacent:
+            result = dsf_traversal_recursive_alternative_path(g, adjacent.data, result)
+    return result
 
 def dfs_traversal_helper(g, source, visited):
     result = ""
@@ -95,13 +119,17 @@ g3.add_edge(2, 0)
 
 print('-' * 50)
 print('DSF iterative V1')
-print(dsf_traversal_iterative(g, 0))
+# print(dsf_traversal_iterative(g, 0))
+# print(dsf_traversal_iterative(g1, 0))
+# print(dsf_traversal_iterative(g2, 0))
+# print(dsf_traversal_iterative(g3, 0))
+# print('-' * 50)
+# print('DSF iterative V2')
+# print(dfs_traversal(g, 0))
+# print(dfs_traversal(g1, 0))
+# print(dfs_traversal(g2, 0))
+# print(dfs_traversal(g3, 0))
+
 print(dsf_traversal_iterative(g1, 0))
-print(dsf_traversal_iterative(g2, 0))
-print(dsf_traversal_iterative(g3, 0))
-print('-' * 50)
-print('DSF iterative V2')
-print(dfs_traversal(g, 0))
-print(dfs_traversal(g1, 0))
-print(dfs_traversal(g2, 0))
-print(dfs_traversal(g3, 0))
+print(dsf_traversal_recursive_alternative_path(g1, 0, []))
+print(dsf_traversal_recursive(g1, 0, []))

@@ -18,6 +18,24 @@ def bfs_traversal(g, source):
                 vertex = vertex.next
         return "".join([str(i) for i in result])
 
+def bfs_traversal_recursive(g, result):
+    g.print_graph()
+    for i in range(g.vertices):
+        result = hepler_rec(g, i, None, result)
+    return result
+
+def hepler_rec(g, source, adjacent, result):
+    if source not in result:
+        result.append(source)
+    if adjacent is None:
+        adjacent = g.array[source].get_head()
+    if adjacent:
+        if adjacent.data not in result:
+            result.append(adjacent.data)
+        if adjacent.next:
+            hepler_rec(g, source, adjacent.next, result)
+    return result
+
 # directed graph
 g = Graph(5, False)
 g.add_edge(0, 1)
@@ -54,3 +72,10 @@ print(bfs_traversal(g, 0))
 print(bfs_traversal(g1, 0))
 print(bfs_traversal(g2, 0))
 print(bfs_traversal(g3, 0))
+
+print('-' * 50)
+print('BSF recursive')
+print(bfs_traversal_recursive(g, []))
+print(bfs_traversal_recursive(g1, []))
+print(bfs_traversal_recursive(g2, []))
+print(bfs_traversal_recursive(g3, []))
