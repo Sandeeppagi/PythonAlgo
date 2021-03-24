@@ -2,22 +2,20 @@
 # algorithm for graph coloring
 
 def addEdge(adj, v, w):
-
     adj[v].append(w)
 
     # Note: the graph is undirected
     adj[w].append(v)
     return adj
 
+
 # Assigns colors (starting from 0) to all
 # vertices and prints the assignment of colors
 def greedyColoring(adj, V):
-
     result = [-1] * V
 
     # Assign the first color to first vertex
     result[0] = 0;
-
 
     # A temporary array to store the available colors.
     # True value of available[cr] would mean that the
@@ -30,13 +28,13 @@ def greedyColoring(adj, V):
         # Process all adjacent vertices and
         # flag their colors as unavailable
         for i in adj[u]:
-            if (result[i] != -1):
+            if result[i] != -1:
                 available[result[i]] = True
 
         # Find the first available color
         cr = 0
         while cr < V:
-            if (available[cr] == False):
+            if not available[cr]:
                 break
 
             cr += 1
@@ -47,16 +45,16 @@ def greedyColoring(adj, V):
         # Reset the values back to false
         # for the next iteration
         for i in adj[u]:
-            if (result[i] != -1):
+            if result[i] != -1:
                 available[result[i]] = False
 
     # Pint the result
     for u in range(V):
         print("Vertex", u, " ---> Color", result[u])
 
+
 # Driver Code
 if __name__ == '__main__':
-
     g1 = [[] for i in range(5)]
     g1 = addEdge(g1, 0, 1)
     g1 = addEdge(g1, 0, 2)
@@ -76,4 +74,3 @@ if __name__ == '__main__':
     g2 = addEdge(g2, 4, 3)
     print("\nColoring of graph 2")
     greedyColoring(g2, 5)
-
