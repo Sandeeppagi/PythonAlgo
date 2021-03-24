@@ -48,3 +48,10 @@ class Graph:
                 print("[", linklist_head.data, end=" ] -> ")
                 linklist_head = linklist_head.next
             print('None')
+
+    def print_graph_ui(self):
+        if self.is_undirected:
+            self.nx.draw(self.undirected, with_labels=1)
+        else:
+            self.nx.draw(self.directed, with_labels=1)
+        self.plt.show()

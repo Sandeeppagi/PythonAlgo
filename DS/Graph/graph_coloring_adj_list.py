@@ -1,24 +1,41 @@
 from graph import Graph
+'''
+Vertex of graph can represent Subjects
+Color of graph can represent Time Slot
+Edges of graph can represent dependency between 2 subjects, such that they can't share
+same Time slot
+'''
 
 def coloring_graph(g):
-    g.print_graph()
-    color_num_arr = [-1] * g.vertices
-    available_color = [True] * g.vertices
-    color_num_arr[0] = 0
+    # g.print_graph()
+    g.print_graph_ui()
+    color_number_for_vertex = [-1] * g.vertices
+    index_mapped_color_used = [False] * g.vertices
+    color_number_for_vertex[0] = 0
 
+    # Start with vertex number 2 / index[1]
     for i in range(1, g.vertices):
         node = g.array[i].get_head()
+
+        # Find all adjacent color used and update index_mapped_color_used True for
+        # the color used
         while node:
-            if color_num_arr[node.data] != -1:
-                available_color[color_num_arr[node.data]] = False
+            if color_number_for_vertex[node.data] != -1:
+                index_mapped_color_used[color_number_for_vertex[node.data]] = True
             node = node.next
-        for j in range(len(available_color)):
-            if available_color[j]:
-                color_num_arr[i] = j
+
+        # Find the first index with value False that would be color we can use
+        for j in range(len(index_mapped_color_used)):
+            if not index_mapped_color_used[j]:
+                color_number_for_vertex[i] = j
                 break
-        available_color = [True] * g.vertices
+
+        # Reset array for next vertex
+        index_mapped_color_used = [False] * g.vertices
+
+    # Print the colors
     for u in range(g.vertices):
-        print("Vertex", u, " ---> Color", color_num_arr[u])
+        print("Vertex", u, " ---> Color", color_number_for_vertex[u])
 
 
 g = Graph(5, True)
@@ -31,5 +48,5 @@ g.add_edge(3, 4)
 
 
 print('-' * 50)
-print('Check Cyclic graph iterative')
+print('Color the graph')
 coloring_graph(g)
