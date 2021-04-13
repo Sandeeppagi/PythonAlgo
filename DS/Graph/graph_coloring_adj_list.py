@@ -1,10 +1,12 @@
 from graph import Graph
+
 '''
 Vertex of graph can represent Subjects
 Color of graph can represent Time Slot
 Edges of graph can represent dependency between 2 subjects, such that they can't share
 same Time slot
 '''
+
 
 def coloring_graph(g):
     # g.print_graph()
@@ -45,7 +47,6 @@ g.add_edge(1, 2)
 g.add_edge(1, 3)
 g.add_edge(2, 3)
 g.add_edge(3, 4)
-
 
 print('-' * 50)
 print('Color the graph')
