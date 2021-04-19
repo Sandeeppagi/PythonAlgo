@@ -1,15 +1,15 @@
-def staircase(n, m):
+def staircase(to_climb, max_jump):
     # base case of when there is no stair
-    if n == 0:
+    if to_climb == 0:
         return 1
-    ways = 0
+    no_of_ways_to_climb = 0
     # iterate over number of steps, we can take
-    for i in range(1, m + 1):
+    for jump in range(1, max_jump + 1):
         # if steps remaining is smaller than the jump step, skip
-        if i <= n:
+        if jump <= to_climb:
             # recursive call with n i units lesser where i is the number of steps taken here
-            ways += staircase(n - i, m)
-    return ways
+            no_of_ways_to_climb += staircase(to_climb - jump, max_jump)
+    return no_of_ways_to_climb
 
 
-print(staircase(4, 2))
+print(staircase(3, 2))
