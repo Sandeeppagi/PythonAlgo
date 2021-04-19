@@ -1,7 +1,12 @@
+memo = {}
+
+
 def staircase(to_climb, max_jump):
     # base case of when there is no stair
     if to_climb == 0:
         return 1
+    if to_climb in memo:
+        return memo[to_climb]
     no_of_ways_to_climb = 0
     # iterate over number of steps, we can take
     for jump in range(1, max_jump + 1):
@@ -9,7 +14,8 @@ def staircase(to_climb, max_jump):
         if jump <= to_climb:
             # recursive call with n i units lesser where i is the number of steps taken here
             no_of_ways_to_climb += staircase(to_climb - jump, max_jump)
+    memo[to_climb] = no_of_ways_to_climb
     return no_of_ways_to_climb
 
 
-print(staircase(3, 2))
+print(staircase(100, 6))
