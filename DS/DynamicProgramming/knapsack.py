@@ -1,3 +1,4 @@
+
 def solve_knapsack(weight, price, capacity, current_index, memo):
     if capacity <= 0 or current_index >= len(weight):
         return 0
