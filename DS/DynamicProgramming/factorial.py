@@ -6,5 +6,12 @@ def factorial(number):
     return table[number]
 
 
+def factorial_recursion(number):
+    if number == 0:
+        return 1
+    return factorial_recursion(number - 1) * number
+
+
 num = 5
 print(f"Factorial of {num} is {factorial(num)}")
+print(f"Factorial of {num} using recursion is {factorial_recursion(num)}")
