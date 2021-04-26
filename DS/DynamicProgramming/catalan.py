@@ -29,6 +29,6 @@ def catalan_bottom_up(number):
 
 
 num = 15
-# print(f"Catalan for {num} is {catalan_recursion(num)}")
-# print(f"Catalan for {num} is {catalan_top_down(num, {})}")
+print(f"Catalan for {num} is {catalan_recursion(num)}")
+print(f"Catalan for {num} is {catalan_top_down(num, {})}")
 print(f"Catalan for {num} is {catalan_bottom_up(num)}")
