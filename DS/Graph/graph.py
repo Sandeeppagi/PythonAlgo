@@ -1,4 +1,4 @@
-from LinkedList.linked_list import LinkedList
+from DS.LinkedList.linked_list import LinkedList
 import matplotlib.pyplot as plt
 import networkx as nx
 
