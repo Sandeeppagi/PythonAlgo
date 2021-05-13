@@ -48,7 +48,6 @@ class MaxHeap:
     def build_heap(self, arr):
         self.heap = arr
         for i in range(len(arr) - 1, -1, -1):
-            print(i)
             self.__max_heapify(i)
 
 
@@ -58,5 +57,9 @@ heap.insert(10)
 heap.insert(-10)
 heap.insert(100)
 heap.remove_max()
+print(f"Max element in heap is : {heap.get_max()}")
+my_arr = [1, 100, 20, 32, 21, 2, 6, 11]
 
-print(heap.get_max())
+
+heap.build_heap(my_arr)
+print(f"Max element in heap is : {heap.get_max()}")
