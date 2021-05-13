@@ -50,6 +50,11 @@ class MinHeap:
         for i in range(len(self.heap) - 1, -1, -1):
             self.__percolate_up(i)
 
+    def find_k_smallest(self, my_arr, k):
+        self.build_heap(my_arr)
+        k_smallest = [self.remove_min() for i in range(k)]
+        return k_smallest
+
 
 heap = MinHeap()
 heap.insert(12)
@@ -62,3 +67,8 @@ print(heap.remove_min())
 print(heap.get_min())
 heap.insert(-100)
 print(heap.get_min())
+
+lst = [9, 4, 7, 1, -2, 6, 5]
+k = 3
+
+print(f"Printing the smallest k elements in list : {heap.find_k_smallest(lst, 3)}")
