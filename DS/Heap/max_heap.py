@@ -50,6 +50,11 @@ class MaxHeap:
         for i in range(len(arr) - 1, -1, -1):
             self.__max_heapify(i)
 
+    def find_k_largest(self, my_arr, k):
+        self.build_heap(my_arr)
+        k_largest = [self.remove_max() for i in range(k)]
+        return k_largest
+
 
 heap = MaxHeap()
 heap.insert(12)
@@ -63,3 +68,8 @@ my_arr = [1, 100, 20, 32, 21, 2, 6, 11]
 
 heap.build_heap(my_arr)
 print(f"Max element in heap is : {heap.get_max()}")
+
+lst = [9, 4, 7, 1, -2, 6, 5]
+k = 3
+
+print(f"Printing the largest k elements in list : {heap.find_k_largest(lst, 3)}")
