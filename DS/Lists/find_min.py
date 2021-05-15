@@ -35,4 +35,13 @@ def find_minimum(lst):
     return lst[0]
 
 
+def find_minimum_v2(lst):
+    min = lst[0]
+    for i in range(1, len(lst)):
+        if lst[i] < min:
+            min = lst[i]
+    return min
+
+
 print(find_minimum([9, 2, 3, 6]))
+print(find_minimum_v2([9, 2, 3, 6]))
