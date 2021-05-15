@@ -8,4 +8,5 @@ def remove_even(lst):
 
 my_list = [1, 2, 4, 5, 10, 6, 3]
 
+
 print(f"Odd number in the list are {remove_even(my_list)}")
