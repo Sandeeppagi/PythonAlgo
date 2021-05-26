@@ -1,6 +1,6 @@
 from graph import Graph
-from Stack.my_queue import Queue
-from Stack.stack import Stack
+from DS.Stack.my_queue import Queue
+from DS.Stack.stack import Stack
 
 # undirected graph
 g = Graph(4, True)
