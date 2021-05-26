@@ -1,5 +1,6 @@
 from graph import Graph
-from Stack.my_queue import Queue
+from DS.Stack.my_queue import Queue
+
 
 def bfs_traversal(g, source):
     g.print_graph()
@@ -18,11 +19,13 @@ def bfs_traversal(g, source):
                 vertex = vertex.next
         return "".join([str(i) for i in result])
 
+
 def bfs_traversal_recursive(g, result):
     g.print_graph()
     for i in range(g.vertices):
         result = hepler_rec(g, i, None, result)
     return result
+
 
 def hepler_rec(g, source, adjacent, result):
     if source not in result:
@@ -35,6 +38,7 @@ def hepler_rec(g, source, adjacent, result):
         if adjacent.next:
             hepler_rec(g, source, adjacent.next, result)
     return result
+
 
 # directed graph
 g = Graph(5, False)

@@ -31,7 +31,6 @@ class Graph:
             if self.is_undirected:
                 self.array[destination].insert_at_head(source)
 
-
     def print_graph(self):
         if self.is_undirected:
             self.nx.draw(self.undirected, with_labels=1)
