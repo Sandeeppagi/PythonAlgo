@@ -1,5 +1,5 @@
 from graph import Graph
-from Stack.stack import Stack
+from DS.Stack.stack import Stack
 
 
 def dsf_traversal_iterative(g, source):
@@ -17,6 +17,7 @@ def dsf_traversal_iterative(g, source):
             node = node.next
     return "".join([str(i) for i in result])
 
+
 def dsf_traversal_recursive_alternative_path(g, curr_node, result):
     if curr_node not in result:
         result.append(curr_node)
@@ -28,6 +29,7 @@ def dsf_traversal_recursive_alternative_path(g, curr_node, result):
         if adjacent:
             result = dsf_traversal_recursive_alternative_path(g, adjacent.data, result)
     return result
+
 
 def dsf_traversal_recursive(g, curr_node, result):
     if curr_node not in result:
@@ -41,6 +43,7 @@ def dsf_traversal_recursive(g, curr_node, result):
         if adjacent:
             result = dsf_traversal_recursive_alternative_path(g, adjacent.data, result)
     return result
+
 
 def dfs_traversal_helper(g, source, visited):
     result = ""
