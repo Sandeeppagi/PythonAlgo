@@ -18,3 +18,18 @@ class Node:
             parent.leftChild = Node(val)
         else:
             parent.rightChild = Node(val)
+
+    def insert_rec(self, val):
+        curr = self
+        if val < curr.val:
+            if curr.leftChild:
+                curr = curr.leftChild
+                curr.insert_rec(val)
+            else:
+                curr.leftChild = Node(val)
+        else:
+            if curr.rightChild:
+                curr = curr.rightChild
+                curr.insert_rec(val)
+            else:
+                curr.rightChild = Node(val)

@@ -7,7 +7,7 @@ class BinarySearchTree:
 
     def insert(self, val):
         if self.root:
-            return self.root.insert(val)
+            return self.root.insert_rec(val)
         else:
             self.root = Node(val)
             return True
