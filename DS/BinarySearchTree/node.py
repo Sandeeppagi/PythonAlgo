@@ -33,3 +33,32 @@ class Node:
                 curr.insert_rec(val)
             else:
                 curr.rightChild = Node(val)
+
+    def search(self, val):
+        curr = self
+        while curr:
+            if val < curr.val:
+                curr = curr.leftChild
+            elif val > curr.val:
+                curr = curr.rightChild
+            else:
+                return True
+        return False
+
+    def search_rec(self, val):
+        curr = self
+        if val < curr.val:
+            if curr.leftChild:
+                curr = curr.leftChild
+                curr.search_rec(val)
+            else:
+                return False
+        elif val > curr.val:
+            if curr.rightChild:
+                curr = curr.rightChild
+                curr.search_rec(val)
+            else:
+                return False
+        else:
+            return True
+        return False

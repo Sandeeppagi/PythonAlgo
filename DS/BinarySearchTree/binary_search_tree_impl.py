@@ -12,6 +12,22 @@ class BinarySearchTree:
             self.root = Node(val)
             return True
 
+    def search_rec(self, val):
+        if self.root:
+            if self.root.val == val:
+                return True
+            return self.root.search_rec(val)
+        else:
+            return False
+
+    def search(self, val):
+        if self.root:
+            if self.root.val == val:
+                return True
+            return self.root.search(val)
+        else:
+            return False
+
 
 BST = BinarySearchTree(6)
 print(f"Root for BST is {BST.root.val}")

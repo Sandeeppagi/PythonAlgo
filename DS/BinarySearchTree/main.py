@@ -71,3 +71,10 @@ for _ in range(15):
     # We have hidden the code for this function but it is available for use!
     display(BST.root)
     print('\n')
+
+
+print(BST.search(15))
+print(BST.search(50))
+
+print(BST.search_rec(15))
+print(BST.search_rec(50))
