@@ -1,6 +1,6 @@
 from graph import Graph
-from Stack.stack import Stack
-from Stack.my_queue import Queue
+from DS.Stack.stack import Stack
+from DS.Stack.my_queue import Queue
 
 
 def find_mother_vertex_recursive(g):

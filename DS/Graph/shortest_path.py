@@ -1,5 +1,5 @@
 from graph import Graph
-from Stack.my_queue import Queue
+from DS.Stack.my_queue import Queue
 
 def find_min(g, source, destination):
     g.print_graph()

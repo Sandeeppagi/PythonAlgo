@@ -1,5 +1,5 @@
 from graph import Graph
-from Stack.stack import Stack
+from DS.Stack.stack import Stack
 
 def is_cyclic_graph(g, source, result):
     stack = Stack()
