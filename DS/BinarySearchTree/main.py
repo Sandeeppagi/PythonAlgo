@@ -63,18 +63,36 @@ def _display_aux(node):
     return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
-BST = BinarySearchTree(50)
-for _ in range(15):
-    ele = random.randint(0, 100)
-    print("Inserting "+str(ele)+":")
-    BST.insert(ele)
-    # We have hidden the code for this function but it is available for use!
-    display(BST.root)
-    print('\n')
+# BST = BinarySearchTree(50)
+# for _ in range(15):
+#     ele = random.randint(0, 100)
+#     print("Inserting "+str(ele)+":")
+#     BST.insert(ele)
+#     # We have hidden the code for this function but it is available for use!
+#     display(BST.root)
+#     print('\n')
+#
+#
+# print(BST.search(15))
+# print(BST.search(50))
+#
+# print(BST.search_rec(15))
+# print(BST.search_rec(50))
 
 
-print(BST.search(15))
-print(BST.search(50))
+BST = BinarySearchTree(6)
+BST.insert(3)
+BST.insert(2)
+BST.insert(4)
+BST.insert(-1)
+BST.insert(1)
+BST.insert(-2)
+BST.insert(8)
+BST.insert(7)
 
-print(BST.search_rec(15))
-print(BST.search_rec(50))
+print("before deletion:")
+display(BST.root)
+
+BST.delete(6)
+print("after deletion:")
+display(BST.root)

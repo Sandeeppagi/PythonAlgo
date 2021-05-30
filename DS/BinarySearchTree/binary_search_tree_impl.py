@@ -28,6 +28,10 @@ class BinarySearchTree:
         else:
             return False
 
+    def delete(self, val):
+        if self.root is not None:
+            self.root = self.root.delete(val)
 
-BST = BinarySearchTree(6)
-print(f"Root for BST is {BST.root.val}")
+
+# BST = BinarySearchTree(6)
+# print(f"Root for BST is {BST.root.val}")
