@@ -37,7 +37,7 @@ def _display_aux(node):
         lines, n, p, x = _display_aux(node.rightChild)
         s = str(node.val)
         u = len(s)
-#        first_line = s + x * '_' + (n - x) * ' '
+        #        first_line = s + x * '_' + (n - x) * ' '
         first_line = s + x * '_' + (n - x) * ' '
         second_line = (u + x) * ' ' + '\\' + (n - x - 1) * ' '
         shifted_lines = [u * ' ' + line for line in lines]
@@ -50,16 +50,16 @@ def _display_aux(node):
     s = '%s' % node.val
     u = len(s)
     first_line = (x + 1) * ' ' + (n - x - 1) * \
-        '_' + s + y * '_' + (m - y) * ' '
+                 '_' + s + y * '_' + (m - y) * ' '
     second_line = x * ' ' + '/' + \
-        (n - x - 1 + u + y) * ' ' + '\\' + (m - y - 1) * ' '
+                  (n - x - 1 + u + y) * ' ' + '\\' + (m - y - 1) * ' '
     if p < q:
         left += [n * ' '] * (q - p)
     elif q < p:
         right += [m * ' '] * (p - q)
     zipped_lines = zip(left, right)
     lines = [first_line, second_line] + \
-        [a + u * ' ' + b for a, b in zipped_lines]
+            [a + u * ' ' + b for a, b in zipped_lines]
     return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
@@ -96,3 +96,7 @@ display(BST.root)
 BST.delete(6)
 print("after deletion:")
 display(BST.root)
+
+print(f"pre-order {BST.pre_order(BST.root, [])}")
+print(f"post-order {BST.post_order(BST.root, [])}")
+print(f"inorder_order {BST.inorder_order(BST.root, [])}")

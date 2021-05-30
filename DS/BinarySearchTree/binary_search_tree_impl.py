@@ -32,5 +32,26 @@ class BinarySearchTree:
         if self.root:
             self.root = self.root.delete(val)
 
+    def pre_order(self, start, arr):
+        if start:
+            arr.append(start.val)
+            arr = self.pre_order(start.leftChild, arr)
+            arr = self.pre_order(start.rightChild, arr)
+        return arr
+
+    def post_order(self, start, arr):
+        if start:
+            arr = self.post_order(start.leftChild, arr)
+            arr = self.post_order(start.rightChild, arr)
+            arr.append(start.val)
+        return arr
+
+    def inorder_order(self, start, arr):
+        if start:
+            arr = self.inorder_order(start.leftChild, arr)
+            arr.append(start.val)
+            arr = self.inorder_order(start.rightChild, arr)
+        return arr
+
 # BST = BinarySearchTree(6)
 # print(f"Root for BST is {BST.root.val}")
