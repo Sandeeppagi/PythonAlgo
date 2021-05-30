@@ -64,43 +64,34 @@ class Node:
         return False
 
     def delete(self, val):
-        # if current node's val is less than that of root node,
-        # then only search in left subtree otherwise right subtree
         if val < self.val:
             if self.leftChild:
                 self.leftChild = self.leftChild.delete(val)
             else:
-                print(str(val) + " not found in the tree")
+                print(f"Value not found at left {val}")
                 return self
         elif val > self.val:
             if self.rightChild:
                 self.rightChild = self.rightChild.delete(val)
             else:
-                print(str(val) + " not found in the tree")
+                print(f"Value not found at right {val}")
                 return self
         else:
-            # deleting node with no children
-            if self.leftChild is None and self.rightChild is None:
+            if self.rightChild is None and self.rightChild is None:
                 self = None
                 return None
-            # deleting node with right child
-            elif self.leftChild is None:
-                tmp = self.rightChild
-                self = None
-                return tmp
-            # deleting node with left child
             elif self.rightChild is None:
-                tmp = self.leftChild
+                temp = self.leftChild
                 self = None
-                return tmp
-            # deleting node with two children
-            else:
-                # first get the inorder successor
-                current = self.rightChild
-                # loop down to find the leftmost leaf
-                while current.leftChild is not None:
-                    current = current.leftChild
-                self.val = current.val
-                self.rightChild = self.rightChild.delete(current.val)
-
+                return temp
+            elif self.leftChild is None:
+                temp = self.rightChild
+                self = None
+                return temp
+            elif self.leftChild and self.rightChild:
+                curr = self.rightChild
+                while curr.leftChild:
+                    curr = curr.leftChild
+                self.val = curr.val
+                self.rightChild = self.rightChild.delete(curr.val)
         return self
