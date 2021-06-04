@@ -1,4 +1,4 @@
-from DS.BinarySearchTree.binary_search_tree_impl import BinarySearchTree
+from DS.BinarySearchTree.binary_search_tree_v2 import BinarySearchTree
 import random
 
 
