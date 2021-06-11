@@ -81,19 +81,19 @@ def _display_aux(node):
 
 
 BST = BinarySearchTree(6)
-BST.insert(3)
-BST.insert(2)
 BST.insert(4)
-BST.insert(-1)
-BST.insert(1)
-BST.insert(-2)
+BST.insert(2)
+BST.insert(5)
+BST.insert(9)
 BST.insert(8)
-BST.insert(7)
+BST.insert(12)
+BST.insert(10)
+BST.insert(14)
 
 print("before deletion:")
 display(BST.root)
 
-BST.delete(6)
+BST.delete(9)
 print("after deletion:")
 display(BST.root)
 
