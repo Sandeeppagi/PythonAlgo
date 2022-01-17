@@ -19,10 +19,10 @@ def binary_search_recursive_helper(A, min, max, target):
 def binary_search_iterative(A, target):
     min = 0
     max = len(A) - 1
-    while min > max:
+    while min < max:
         mid = (min + max) // 2
         if A[mid] == target:
-            return True
+            return mid
         elif A[mid] > target:
             max = mid - 1
         elif A[mid] < target:
@@ -30,12 +30,17 @@ def binary_search_iterative(A, target):
     return False
 
 
-A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# print('-'*30)
+# target = 9
+# print(f'Array has {target} using recursion: {binary_search_recursive(A, target)}')
+# print(f'Array has {target} using iteration: {binary_search_recursive(A, target)}')
+# print('-'*30)
+# target = 11
+# print(f'Array has {target} using recursion: {binary_search_recursive(A, target)}')
+# print(f'Array has {target} using iteration: {binary_search_recursive(A, target)}')
+
+A = [15, 19, 17, 23, 25, 45, 54]
 print('-'*30)
-target = 9
-print(f'Array has {target} using recursion: {binary_search_recursive(A, target)}')
-print(f'Array has {target} using iteration: {binary_search_recursive(A, target)}')
-print('-'*30)
-target = 11
-print(f'Array has {target} using recursion: {binary_search_recursive(A, target)}')
-print(f'Array has {target} using iteration: {binary_search_recursive(A, target)}')
+target = 45
+print(f'Array has {target} using recursion: {binary_search_iterative(A, target)}')
