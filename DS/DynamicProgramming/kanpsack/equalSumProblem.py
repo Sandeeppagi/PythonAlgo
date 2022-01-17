@@ -53,6 +53,7 @@ def equalSumMemo(arr, sum, n):
 
 print(equalSumMemo(arr, arr_sum, n))
 
+
 def equalSumTopDown(arr):
     arr_len = len(arr)
     arr_sum = sum(arr)
