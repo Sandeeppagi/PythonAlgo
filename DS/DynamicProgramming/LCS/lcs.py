@@ -20,12 +20,15 @@ def lcs_recursive_v2(str1, str2, str1_idx, str2_idx):
         return max(lcs_recursive_v2(str1, str2, str1_idx + 1, str2_idx),
                    lcs_recursive_v2(str1, str2, str1_idx, str2_idx + 1))
 
+
 str1 = 'abcdfejgh'
 str2 = 'bdekihjl'
 str1_len = len(str1)
 str2_len = len(str2)
 
 table_top_down = [[-1 for i in range(str2_len + 1)] for j in range(str1_len + 1)]
+
+
 def lcs_top_down(str1, str2, str1_len, str2_len):
     # Base case
     if str1_len == 0 or str2_len == 0:
@@ -42,6 +45,26 @@ def lcs_top_down(str1, str2, str1_len, str2_len):
                                                  lcs_top_down(str1, str2, str1_len, str2_len - 1))
         return table_top_down[str1_len][str2_len]
 
+
+def lcs_bottom_up(str1, str2, str1_len, str2_len):
+    table = [[0 for j in range(str2_len + 1)] for i in range(str1_len + 1)]
+    # Initialise table
+    for i in range(str1_len + 1):
+        for j in range(str2_len + 1):
+            if i == 0 or j == 0:
+                table[i][j] = 0
+    # Choice diagram
+    for i in range(1, str1_len + 1):
+        for j in range(1, str2_len + 1):
+            print(table)
+            if str1[i - 1] == str2[j - 1]:
+                table[i][j] = 1 + table[i - 1][j - 1]
+            else:
+                table[i][j] = max(table[i - 1][j], table[i][j - 1])
+    return table[str1_len][str2_len]
+
+
 print('LCS recursive', lcs(str1, str2, str1_len, str2_len))
 print('LCS recursive V2', lcs_recursive_v2(str1, str2, 0, 0))
 print('LCS memo', lcs_top_down(str1, str2, str1_len, str2_len))
+print('LCS bottom_up', lcs_bottom_up(str1, str2, str1_len, str2_len))
