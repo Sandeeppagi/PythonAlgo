@@ -26,6 +26,7 @@ print(help_memo(4))
 print(help_memo(6))
 print(help_memo(7))
 
+
 def fibonacci_bottom_up(num):
     if num == 0 or num == 1:
         return num
