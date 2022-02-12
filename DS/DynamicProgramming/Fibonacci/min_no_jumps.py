@@ -15,3 +15,4 @@ def min_no_jumps(arr):
 
 print(min_no_jumps([2, 1, 1, 1, 4]))
 print(min_no_jumps([0, 1, 1, 1, 4]))
+
